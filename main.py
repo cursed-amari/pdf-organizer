@@ -195,6 +195,28 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         return result_list
 
     @logger.catch
+    def pre_sorting(self) -> list:
+        '''
+        Сортировка списка по порядку файлов
+        для стандартных имен window
+        для случайных имён
+        :return: сортированный список
+        '''
+        pre_sorted_list = []
+        sorted_list_files_organizer = []
+
+        for i in self.paths_to_files_organizer:
+            if re.search(r"(.*)\((\d*)\)(.*)", i):
+                pre_sorted_list.append(i)
+        if pre_sorted_list:
+            for i in sorted(self.paths_to_files_organizer, key=lambda x: int(re.search(r"(.*)\((\d*)\)(.*)", x)[2])):
+                sorted_list_files_organizer.append(i)
+        else:
+            return self.paths_to_files_organizer
+
+        return sorted_list_files_organizer
+
+    @logger.catch
     def sorting_list(self) -> list:
         '''
         Сортировка списка
@@ -206,24 +228,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         1234 -> 1234
         :return: sort list 
         '''
-        sorted_list_files_organizer = []
+        sorted_list_files_organizer = self.pre_sorting()
         result_list = []
-
-        for i in sorted(self.paths_to_files_organizer,
-                        key=lambda x: int(re.search(r"(.*)\((\d*)\)(.*)", x)[2])):
-            sorted_list_files_organizer.append(i)
 
         if (self.checkBox_organizer_midlle_combine.isChecked() or self.checkBox_organizer_last_combine.isChecked()) and \
                 (len(sorted_list_files_organizer) - len(self.skip_this_page())) % 2 != 0:
-            error = QMessageBox()
-            error.setWindowTitle('Ошибка')
-            error.setText('Нельзя объединить не чётное количество файлов используя middle или last combine')
-            error.setIcon(QMessageBox.Icon.Warning)
-            error.setStandardButtons(QMessageBox.StandardButton.Ok)
-            error.setDefaultButton(QMessageBox.StandardButton.Ok)
-
-            error.exec()
-            return
+            return self.user_except('Нельзя объединить не чётное количество файлов используя middle или last combine')
 
         if self.checkBox_organizer_midlle_combine.isChecked():
             counter_one = 0
@@ -305,6 +315,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.progressBar_organizer.show()
             self.label_complete_combine.hide()
+
+    @logger.catch
+    def user_except(self, text: str):
+        error = QMessageBox()
+        error.setWindowTitle('Ошибка')
+        error.setText(text)
+        error.setIcon(QMessageBox.Icon.Warning)
+        error.setStandardButtons(QMessageBox.StandardButton.Ok)
+        error.setDefaultButton(QMessageBox.StandardButton.Ok)
+
+        error.exec()
 
 
 if __name__ == "__main__":
