@@ -1,8 +1,6 @@
 import os
 import re
 
-test = ['C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (1)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (2)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (3)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (4)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (5)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (6)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (7)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (8)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (9)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (10)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (11)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (12)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (13)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (14)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (15)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (16)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (17)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (18)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (19)_16.8.2023.pdf', 'C:/Users/user/PycharmProjects/pdf_organizer/pdf/Рисунок (20)_16.8.2023.pdf']
-
 
 class PathHandler:
     def __init__(self, paths: list):
