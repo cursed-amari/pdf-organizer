@@ -78,15 +78,3 @@ class PathHandler:
             return sorted_list_files_organizer
         else:
             return self.paths
-
-
-a = PathHandler(test)
-# print(a.get_path_to_file())
-# print(a.common_combine())
-# print(a.last_combine())
-# print(a.middle_combine())
-# a.del_pages([1, 20])
-# print(a.last_combine())
-# for i in a.get_list_file_name():
-#     print(i)
-print(a.sorting_paths())
